@@ -1,6 +1,6 @@
 # Canvas Experiments
 
-Some of my experiments while studying Canvas API.
+Some of my experiments while studying the Canvas API.
 
 | Experiment             | File Preview  |
 | -------------          |:-------------:|
