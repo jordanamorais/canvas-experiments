@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flowers Canvas Exp.</title>
+</head>
+<body>
+
+	<div class="wrapper">
+		
+		<canvas width="400" height="400"></canvas>
+		
+	</div>
+
+	<script>
+		
+		var screen = document.querySelector('canvas');
+		var brush = screen.getContext('2d');
+
+		brush.fillStyle = 'green';
+   		brush.fillRect(0, 0, 600, 400);
+
+		function drawCircle(x, y, circleSizeRadius, color) {
+
+			brush.fillStyle = color;
+			brush.beginPath();
+			brush.arc(x, y, circleSizeRadius, 0, 2 * 3.14);
+			brush.fill();
+
+		}
+
+		function drawFlower(x, y, color) {
+
+			var circleRadius = 15;
+			var circleLength = 2 * circleRadius;
+
+			// miolo
+			drawCircle(x, y, 15, 'orange');
+
+			// Petalas
+			drawCircle(x, y - circleLength, circleRadius, color);
+			drawCircle(x, y + circleLength, circleRadius, color);
+			drawCircle(x + circleLength, y, circleRadius, color);
+			drawCircle(x - circleLength, y, circleRadius, color);
+
+		}
+
+		drawFlower(75, 75, 'red');
+
+		drawFlower(300, 200, 'purple');
+
+		drawFlower(100, 300, 'pink');
+
+	</script>
+</body>
+</html>

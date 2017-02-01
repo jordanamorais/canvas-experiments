@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Simple Bar Chart Canvas Exp.</title>
+</head>
+<body>
+
+	<div class="wrapper">
+		
+		<canvas width="600" height="400"></canvas>
+		
+	</div>
+
+	<script>
+		
+		// Canvas
+		var screen = document.querySelector('canvas');
+		var brush = screen.getContext('2d');
+
+		// Chart Data
+		var series2015 = [50, 25, 20, 5];
+		var series2016 = [65, 20, 13, 2];
+		var colors = ['#2980b9', '#27ae60', '#f39c12', '#c0392b'];
+		var captions = ['Chrome', 'Firefox', 'Safari', 'Others (Opera, IE, Edge..)']
+		var textColor = '#2c3e50';
+
+
+		function drawRectangle(x, y, size, bgColor, barValue) {
+
+			brush.fillStyle = bgColor;
+			brush.fillRect(x, y, size, barValue);
+
+		}
+
+		function drawText(text, x, y, textColor, textSize) {
+
+			brush.font = textSize + ' Arial';
+			brush.fillStyle = textColor;
+			brush.fillText(text, x, y - 10); // with margin
+
+		}
+
+		function drawBarChart(x, y, series, colors, text, textColor) {
+
+			var chartHeight = 0;
+
+			drawText(text, x, y, textColor, '15px');
+
+			for(var i = 0; i < series.length; i++) {
+
+				if (i == 0) {
+					chartHeight = 0;
+				} else {
+					chartHeight = chartHeight + series[i - 1];
+				}
+
+				drawRectangle(x, y + chartHeight, 50, colors[i], series[i]);
+
+			}
+
+		}
+
+		function drawCaptions(x, y, colors, captions) {
+
+			var captionGap = 0;
+			var rectangleGap = 18;
+
+			for(var i = 0; i < captions.length; i++) {
+
+				if (i == 0) {
+					captionGap = 0;
+				} else {
+					captionGap = captionGap + 90;
+				}
+
+				drawText(captions[i], x + captionGap + rectangleGap, y, textColor, '15px');
+				drawRectangle(x + captionGap, y - rectangleGap, 15, colors[i], 5);
+			}
+
+		}
+
+
+		// Draw Bar Chart
+		drawText("Most commonly used browsers per year", 20, 30, textColor, '18px');
+		drawBarChart(50, 70, series2015, colors, '2015', textColor);
+		drawBarChart(150, 70, series2016, colors, '2016', textColor);
+		drawCaptions(20, 220, colors, captions);
+
+
+	</script>
+</body>
+</html>

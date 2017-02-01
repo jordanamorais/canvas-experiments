@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Brazil Flag Canvas Exp.</title>
+</head>
+<body>
+
+	<div class="wrapper">
+		<canvas width="600" height="400"></canvas>
+	</div>
+
+	<script>
+		
+		var screen = document.querySelector('canvas');
+		var brush = screen.getContext('2d');
+
+		// Flag rectangle
+		brush.fillStyle = 'darkgreen';
+		brush.fillRect(0, 0, 600, 400);
+
+		// Flag losangle
+		brush.fillStyle = 'yellow';
+		brush.beginPath();
+
+		brush.moveTo(300, 50);
+		brush.lineTo(50, 200);
+		brush.lineTo(550, 200);
+
+		brush.fill();
+
+		brush.fillStyle = 'yellow';
+		brush.beginPath();
+
+		brush.moveTo(300, 350);
+		brush.lineTo(50, 200);
+		brush.lineTo(550, 200);
+
+		brush.fill();
+
+		// Flag circle
+		brush.fillStyle = 'darkblue';
+		brush.beginPath();
+
+		brush.arc(300, 200, 95, 0, 2 * 3.14); // 2 * 3,14 preenche o circulo todo. Se fosse 1 * 3,14 seria um semi-circulo
+		brush.fill();
+
+
+	</script>
+	
+</body>
+</html>
